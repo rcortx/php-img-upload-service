@@ -35,11 +35,13 @@ more the chances of the request being dropped due to slow internet connections.
     -3) Download and setup the following PHP extensions: 
         (Phalcon) extension=php_phalcon.dll
         (Imagick) extension=php_imagick.dll
-    
+
     -4) Setup Redis
     
     -5) in directory img-upload-service/public/index.php change MySQL DB settigns if applicable. (username, password etc)
     
     -6) Copy directory img-upload-service to (wamp/www) directory in WAMP or it's corresponding one in LAMP
     
-    -7) Run it! go to localhost/img-upload-service/ and follow instructions for a quick demo!
+    -7) Download and setup composer. on the terminal/cmd, move to root project directory and type "composer install" to automatically download dependencies
+    
+    -8) Run it! go to localhost/img-upload-service/ and follow instructions for a quick demo!
