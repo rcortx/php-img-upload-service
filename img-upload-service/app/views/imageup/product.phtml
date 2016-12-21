@@ -1,0 +1,35 @@
+<h1>
+List an Awesome Product!
+</h1>
+
+<?php echo $this->tag->form(
+array("imageup/upload", "method"=>"post", "enctype"=>"multipart/form-data")); ?>
+
+<p>
+        <label for="name">
+            Name
+        </label>
+
+
+<?php echo $this->tag->textField("name"); ?>
+
+ </p>
+
+<p>
+        <label for="price">
+            Price
+        </label>
+        
+
+<?php echo $this->tag->numericField("price"); ?>
+ </p>
+
+
+<p>
+    <?php echo $this->tag->submitButton("Add Product!"); ?>
+</p>
+
+</form>
+
+<?php echo $this->tag->linkTo("imageup/product", "click for product form! Use POSTMAN.") ?><br>
+<?php echo $this->tag->linkTo("imageup/productlist", "click for product list!") ?>

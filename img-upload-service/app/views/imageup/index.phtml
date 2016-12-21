@@ -1,0 +1,82 @@
+<h1>
+List an Awesome Product!
+(Test upload service)
+</h1>
+<h2>Description</h2>
+<p>
+Product is uploaded through two consecutive REST calls, first call uploads the image and caches it to Redis.
+</p>
+<p>
+Second call uploads product data to MySQL and links image to the product in DB.
+The uploaded images are then resized asynchronously to any specs provided in settings and saves them to permanent storage.
+</p>
+<p>
+It's not advisable to upload the images in the same request since the greater the payload
+more the chances of the request being dropped due to slow internet connections.
+</p>
+<p>
+    It get's complicated if you have more than one server as you need access to some fast store shared across the servers so that the second request which carries the product data is able to use the cached images. <strong>The in-memory db Redis comes to the rescue where the image is first stored as a binary string! </strong>
+</p>
+<p>
+    The other option is to ensure that your load balancer redirects both the requests to the same server. This is a bit tricky to get right.
+    </p>
+
+<p>
+    Also provided is a product fetch API for querying stored products, this should send all the prouducts data along with the iages origianl and resized.
+</p>
+
+<h2>Instructions</h2>
+<p style="font-size:20">
+    Upload image through this form, no need to fill the rest of the fields.
+    <br><br>
+    It will upload the image through the rest API which is also doable through AJAX.
+    <br><br>
+    After which, you will have to do a POST with product details (name, price) on the link shown
+    second from the bottom.
+    <br><br>
+    The last link outputs product list in JSON format.
+    <br><br>
+    I tried using pthreads extension for PHP but it didn't work on windows requiring VC14 update. It can be implemented easily over linux. Windows has too many problems with PHP or anything in general.
+
+</p>
+
+<?php echo $this->tag->form(
+array("imageup/upload", "method"=>"post", "enctype"=>"multipart/form-data")); ?>
+
+<p>
+        <label for="name">
+            Name
+        </label>
+
+
+<?php echo $this->tag->textField("name"); ?>
+
+ </p>
+
+<p>
+        <label for="price">
+            Price
+        </label>
+        
+
+<?php echo $this->tag->textField("price"); ?>
+ </p>
+
+<p>
+        <label for="img">
+            Image
+        </label>
+
+<?php echo $this->tag->fileField("img"); ?>
+
+
+ </p>
+
+<p>
+    <?php echo $this->tag->submitButton("Upload!"); ?>
+</p>
+
+</form>
+
+<?php echo $this->tag->linkTo("imageup/product", "click for product form! Use POSTMAN.") ?><br>
+<?php echo $this->tag->linkTo("imageup/productlist", "click for JSON product list!") ?>
