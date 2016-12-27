@@ -5,7 +5,7 @@ include 'ProcessImage.php';
 
 use Phalcon\Mvc\Controller;
 
-// loading dependencies via composer Autoloader
+// loading dependencies via Composer Autoloader
 require dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 
 class ImageupController extends Controller{
