@@ -21,7 +21,7 @@ more the chances of the request being dropped due to slow internet connections.
     </p>
 
 <p>
-    Also provided is a product fetch API for querying stored products, this should send all the prouducts data along with the iages origianl and resized.
+    Also provided is a product fetch API for querying stored products, this should send all the prouducts data along with the images original and resized.
 </p>
 
 <h2>Instructions</h2>
